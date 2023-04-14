@@ -20,7 +20,6 @@ module.exports = {
   },
 
   async execute(interaction, client) {
-    
     await interaction.deferReply();
     const playLink = interaction.options.get("query").value;
     await client.distube.play(interaction.member.voice.channel, playLink, {

@@ -1,27 +1,23 @@
-const { SlashCommandRoleOption } = require("discord.js");
 const { embedBuilder, panelBuilder } = require("../functions/function");
 module.exports = async (client) => {
   try {
     let playMode = "play";
     let repeatMode = "off";
     let radioMode = "off";
-    // let swapmsg = client.swapmsg;
 
     // events
-    client.distube
-      .on("playSong", async (queue, song) => {
-        if (client.swapmsg) {
-          client.swapmsg.edit({
-            embeds: [embedBuilder(queue, song)],
-          });
-        } else {
-          client.swapmsg = await queue.textChannel.send({
-            embeds: [embedBuilder(queue, song)],
-            components: [panelBuilder(playMode, repeatMode)],
-          });
-        }
-      })
-      
+    client.distube.on("playSong", async (queue, song) => {
+      if (client.swapmsg) {
+        client.swapmsg.edit({
+          embeds: [embedBuilder(queue, song)],
+        });
+      } else {
+        client.swapmsg = await queue.textChannel.send({
+          embeds: [embedBuilder(queue, song)],
+          components: [panelBuilder(playMode, repeatMode)],
+        });
+      }
+    });
 
     client.on("interactionCreate", async (interaction) => {
       if (interaction.isButton()) {

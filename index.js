@@ -25,9 +25,9 @@ client.distube = new DisTube(client, {
   youtubeCookie: process.env.cookie,
   nsfw: true,
   plugins: [
-    new SpotifyPlugin({
-      emitEventsAfterFetching: true,
-    }),
+    // new SpotifyPlugin({
+    //   emitEventsAfterFetching: true,
+    // }),
     new SoundCloudPlugin(),
     new YtDlpPlugin({ update: false }),
   ],
@@ -50,17 +50,17 @@ const commandFolders = fs.readdirSync("./src/commands");
   client.login(process.env.token);
 })();
 
-// // Удаление slash команд
-// // rest
-// //   .get(Routes.applicationGuildCommands("config.client_id, config.guild_id))
-// //   .then((data) => {
-// //     const promises = [];
-// //     for (const command of data) {
-// //       const deleteUrl = `${Routes.applicationGuildCommands(
-// //         config.client_id,
-// //         config.guild_id
-// //       )}/${command.id}`;
-// //       promises.push(rest.delete(deleteUrl));
-// //     }
-// //     return Promise.all(promises);
-// //   });
+// Удаление slash команд
+// rest
+//   .get(Routes.applicationGuildCommands("config.client_id, config.guild_id))
+//   .then((data) => {
+//     const promises = [];
+//     for (const command of data) {
+//       const deleteUrl = `${Routes.applicationGuildCommands(
+//         config.client_id,
+//         config.guild_id
+//       )}/${command.id}`;
+//       promises.push(rest.delete(deleteUrl));
+//     }
+//     return Promise.all(promises);
+//   });
